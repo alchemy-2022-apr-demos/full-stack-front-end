@@ -1,8 +1,19 @@
-// import functions and grab DOM elements
+// on form submit
+// get the info from the form
+// make an API request to /api/v1/users with the info
 
-// let state
+import { signUpUser } from './fetch-utils.js';
 
-// set event listeners 
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state
+const signUpForm = document.getElementById('sign-up');
+
+signUpForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(signUpForm);
+    const data = await signUpUser({
+        email: formData.get('email'),
+        password: formData.get('password'),
+        firstName: formData.get('first-name'),
+        lastName: formData.get('last-name'),
+    });
+    console.log(data);
+});
