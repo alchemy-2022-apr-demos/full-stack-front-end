@@ -8,6 +8,7 @@ export async function signUpUser(userInfo) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(userInfo),
+        credentials: 'include',
     });
     const data = await resp.json();
     if (resp.ok) {
